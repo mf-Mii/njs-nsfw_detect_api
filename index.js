@@ -4,11 +4,14 @@ const jpeg = require('jpeg-js')
 
 const tf = require('@tensorflow/tfjs-node')
 const nsfw = require('nsfwjs')
+const morgan = require('morgan')
 
 const app = express()
 const upload = multer()
 
 let _model
+
+app.use(morgan('combined'))
 
 const convert = async (img) => {
   // Decoded image in UInt8 Byte array
